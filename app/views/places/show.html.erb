@@ -6,11 +6,11 @@
       </div> 
 </div>
 
-<% for post in @posts %>
+<!--<% for post in @posts %>
   <h3><%= post["title"] %></h3>
   <h4><%= post["posted_on"] %></h4>
   <p><%= post["description"] %></p>
-<% end %>
+<% end %> -->
 
 <div class="row">
   <% for post in @posts %>
@@ -20,7 +20,10 @@
         <% user = User.find_by({ "id" => post["user_id"] }) %>
         <%# handle any potential bad data where the post is missing a user %>
         <% if user %>
-          <%= user["username"] %>
+          <!-- <%= user["username"] %> -->
+          <h3><%= post["title"] %></h3>
+          <h4><%= post["posted_on"] %></h4>
+          <p><%= post["description"] %></p>
         <% else %>
           anonymous
         <% end %>
