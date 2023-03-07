@@ -27,4 +27,4 @@ production:
   database: trip_journal_production
   username: trip_journal
   password: <%= ENV["TRIP_JOURNAL_DATABASE_PASSWORD"] %>
-  database: db/production.sqlite3
+  #database: db/production.sqlite3
