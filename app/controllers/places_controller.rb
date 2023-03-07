@@ -5,9 +5,12 @@ class PlacesController < ApplicationController
   end
 
   def show
+    if @current_user
     @place = Place.find_by({ "id" => params["id"] })
     @current_user_posts = Post.where({"user_id" => @current_user["id"]}) 
     @posts = @current_user_posts.where({ "place_id" => @place["id"] })
+    end
+    
   end
 
   def new

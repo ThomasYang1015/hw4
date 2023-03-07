@@ -1,3 +1,4 @@
+<% if @current_user %>
 <h1><%= @place["name"] %></h1>
 
 <div class="row">
@@ -23,6 +24,11 @@
           <!-- <%= user["username"] %> -->
           <h3><%= post["title"] %></h3>
           <h4><%= post["posted_on"] %></h4>
+          <% if post.uploaded_image.attached? %>
+            <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+          <% else %>
+            <img src="<%= post["image"] %>" class="img-fluid">
+          <% end %>
           <p><%= post["description"] %></p>
         <% else %>
           anonymous
@@ -36,7 +42,9 @@
 </div>
 
 
-
+<% else %>
+  You must first <a href="/login">login</a> to post.
+<% end %>
 <p>
   <a href="/places">Back to All Places</a>
 </p>
